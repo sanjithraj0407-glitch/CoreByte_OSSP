@@ -1,0 +1,78 @@
+Control Transitions Between User Space and Kernel Space During Execution
+
+A program normally starts executing in User Space.
+User Space cannot directly access hardware resources.
+When a file operation is needed, the program makes a system call.
+The system call transfers control from User Space to Kernel Space.
+The kernel performs the requested operation safely.
+After completing the operation, the kernel returns control to User Space.
+This transition happens for every system call such as open(), read(), write(), and close().
+
+
+Execution Flow
+
+open() → Kernel opens the file.
+read() → Kernel reads data from the file.
+write() → Kernel writes data to the destination file.
+close() → Kernel closes the opened files.
+The program ends after all operations are completed.
+
+
+strace
+
+strace is a Linux utility used to trace all the system calls made by a program.
+It shows how a program communicates with the Linux kernel during execution.
+It is mainly used for debugging and analyzing system call behavior.
+
+
+Command Used
+
+strace cat z9
+
+Example Output:
+
+vaishnavi@DESKTOP-SP2IV5I:~$ strace cat z9
+execve("/usr/bin/cat", ["cat", "z9"], 0x7ffc77b37568 /* 25 vars */) = 0
+brk(NULL)                               = 0x5866f6e99000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x76d7e4fd0000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+
+
+System Calls Observed
+
+From the output, these are the important system calls and their purpose:
+
+execve() – Starts the cat program.
+brk() – Allocates memory for the process.
+mmap() – Maps libraries and memory into the process.
+access() – Checks whether a file exists.
+openat() – Opens files and shared libraries.
+fstat() – Gets information about the opened file.
+read() – Reads data from the file.
+close() – Closes the opened file descriptor.
+
+
+Sequence of System Calls
+
+1. execve() loads and starts the cat command.
+2. brk() and mmap() allocate memory for the process.
+3. access() checks for required files.
+4. openat() opens the required libraries and the target file (z9).
+5. fstat() retrieves information about the opened file.
+6. read() reads the contents of the file.
+7. close() closes the file after reading is completed.
+
+
+Kernel Services Involved
+
+System Call    Kernel Service
+
+execve()       Process Management
+brk()          Memory Management
+mmap()         Memory Management
+access()       File Management
+openat()       File Management
+fstat()        File Information Service
+read()         File & I/O Management
+close()        File Management
