@@ -1,0 +1,15 @@
+A process in Linux is a program that is currently being executed. When the fork() system call is used, a new child process is created from the existing parent process.
+
+Each process has a unique Process ID (PID) and a Parent Process ID (PPID). The getpid() system call returns the PID of the current process, while getppid() returns the PID of its parent.
+
+During execution, a process passes through different states:
+
+Ready (R): The process is ready to execute and is waiting for CPU allocation.
+Running: The process is currently executing on the CPU.
+Waiting/Sleeping (S): The process is waiting for an event, input, or another process.
+Terminated (Z/T depending on situation): The process has completed execution. A terminated child may temporarily appear as a zombie (Z) until the parent collects its exit status using wait().
+
+Observation
+
+When the C program is executed using fork(), two processes are observed: the parent process and the child process. Both have different PIDs, while the child's PPID corresponds to the parent's PID.
+Using ps, top, and /proc, the process can be observed in different states. Initially, the process may be Ready/Running, then it may enter a Waiting/Sleeping state when sleep() or wait() is used. After completing execution, the process enters the Terminated state.
