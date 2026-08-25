@@ -1,0 +1,53 @@
+Linux Commands
+
+1. uname -a
+Purpose: Displays operating system and kernel information.
+
+2. lscpu
+Purpose: Shows CPU architecture, cores, threads, and processor details.
+
+3. lsblk
+Purpose: Lists storage devices, partitions, and mount points.
+
+4. ps
+Purpose: Displays currently running processes with their Process IDs (PIDs).
+
+5. top
+Purpose: Shows real-time CPU, memory usage, and running processes.
+
+
+Relationship Between Hardware Resources and OS Services
+
+CPU → Process scheduling.
+Memory → Virtual memory management.
+Storage → File system management.
+I/O Devices → Device driver management.
+Kernel → Connects software with hardware.
+
+
+OS Abstracts the CPU
+
+• The OS schedules processes on CPU cores.
+• It performs context switching between processes.
+• It allows multiple programs to run efficiently.
+
+
+OS Abstracts Memory
+
+• The OS provides virtual memory for each process.
+• It allocates and manages RAM automatically.
+• It uses swap memory when RAM is full.
+
+
+OS Abstracts Storage
+
+• The OS manages disks through a file system.
+• It organizes data into files and directories.
+• It controls read and write operations.
+
+
+OS Abstracts I/O Devices
+
+• The OS uses device drivers to communicate with hardware.
+• It handles input and output requests from applications.
+• It manages interrupts from hardware devices.
