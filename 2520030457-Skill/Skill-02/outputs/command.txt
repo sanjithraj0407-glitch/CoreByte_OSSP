@@ -1,0 +1,65 @@
+ # COMMANDS :
+Step 1: Create Project Folder
+mkdir Skill2
+
+Step 2: Open Project Folder
+cd Skill2
+
+Step 3: Create Source File
+nano interactive_loop.c
+
+ PROCESS: Paste the program, then press:
+Ctrl + O → Save
+Enter
+Ctrl + X → Exit
+
+Step 4: Compile the Program
+gcc Programm.c -o Programm
+
+Step 5: Execute the Program
+./a.out
+
+Terminal Command Outputs: 
+
+Create Folder
+student@ubuntu:~$ mkdir Skill2
+student@ubuntu:~$
+
+Open Folder
+student@ubuntu:~$ cd Skill2
+student@ubuntu:~/Skill2$
+
+Open Nano Editor
+student@ubuntu:~/Skill2$ nano .c
+GNU nano 7.2
+Compile Program
+student@ubuntu:~/Skill2$ gcc Programm.c -o Program
+student@ubuntu:~/Skill2$
+
+Run Program
+student@ubuntu:~/Skill2$ ./Program
+SKILL 2 - Interactive Loop Test Output
+Test 1: Normal Input
+skill2-shell> hello
+Command entered: hello
+Test 2: Multi-Character Command
+skill2-shell> open file
+Command entered: open file
+Test 3: Backspace Handling
+skill2-shell> helllo
+
+After pressing Backspace:
+
+skill2-shell> hello
+Command entered: hello
+Test 4: Enter Key
+skill2-shell> test command
+Command entered: test command
+Test 5: Exit Condition
+skill2-shell> exit
+Exiting Skill 2 interactive loop...
+
+RESULT
+All interactive input loop tests completed successfully.
+
+
